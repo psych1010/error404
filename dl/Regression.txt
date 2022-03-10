@@ -1,0 +1,21 @@
+# Regression
+
+import numpy as np
+import matplotlib.pyplot as plt
+x = np.array([1,2,3,4,5,6,7,8,9,10])
+y = np.array([300,350,500,700,800,850,900,900,1000,1200])
+
+n = np.size(x)
+mean_x = np.mean(x)
+mean_y = np.mean(y)
+ss_xy = np.sum(y*x - n*mean_y*mean_x)
+ss_xx = np.sum(x*x - n*mean_x*mean_x)
+b1 = ss_xy/ss_xx
+b0 = mean_y - b1*mean_x
+
+plt.scatter(x, y, marker="o", s=30)
+ypred = b0 + b1*x
+plt.plot(x, ypred, color="g")
+plt.xlabel('Size')
+plt.ylabel('Cost')
+plt.show()

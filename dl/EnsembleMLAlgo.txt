@@ -1,0 +1,33 @@
+# Ensemble Machine Learning Algorithm
+
+import pandas as pd
+from sklearn import model_selection
+#from sklearn.ensemble import BaggingClassifier
+from sklearn.tree import DecisionTreeClassifier
+#from sklearn.ensemble import RandomForestClassifier
+#from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.ensemble import *
+
+df = pd.read_csv("C:/Users/Apurva/Desktop/Semester 6/Deep Learning/prac7/heart.csv")
+print(df)
+
+array = df.values
+X = array[:,0:11]
+Y = array[:,11]
+seed = 7
+kfold = model_selection.KFold(n_splits = 10)
+cart = DecisionTreeClassifier()
+num_trees = 100
+model1 = BaggingClassifier(base_estimator = cart, n_estimators = num_trees)
+results = model_selection.cross_val_score(model1, X, Y, cv = kfold)
+print("Using model 1 : ",results.mean())
+
+max_features = 5
+model2 = RandomForestClassifier(n_estimators = num_trees, max_features = max_features)
+results = model_selection.cross_val_score(model2, X, Y, cv = kfold)
+print("Using model 2 : ", results.mean())
+
+num_trees = 100
+model3 = GradientBoostingClassifier(n_estimators = num_trees)
+results = model_selection.cross_val_score(model3, X, Y, cv = kfold)
+print("Using model 3 : ", results.mean())

@@ -1,0 +1,31 @@
+# Basic statistics using Python
+
+import pandas as pd
+df = pd.read_csv('C:/Users/prac1/employee.csv')
+df.head()
+
+mean1 = df['sales_A'].mean()
+median1 = df['sales_A'].median()
+
+print("Mean of Sales A : ",mean1)
+print("Median of Sales B : ",median1)
+
+std1 = df['sales_B'].std()
+std2 = df['sales_C'].std()
+
+print("Std of Sales B : ",std1)
+print("Std of Sales C : ",std2)
+
+min1 = df['Salary'].min()
+max1 = df['Salary'].max()
+
+print("Minimum Salary : ",min1)
+print("Maximum Salary : ",max1)
+
+import matplotlib.pyplot as plt
+plt.scatter(df['Name'], df['Salary'], color = 'black')
+plt.plot(df['Name'], df['Salary'], color = 'blue')
+plt.title("Employees")
+plt.xlabel("Name")
+plt.ylabel("Salary")
+plt.show()
