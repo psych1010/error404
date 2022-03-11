@@ -1,0 +1,28 @@
+''' Create Virus '''
+
+import os
+
+
+def get_home_path():
+    ''' Get user home path '''
+    return os.path.expanduser('~')
+
+
+def write_content():
+    ''' Create file named `%tempDir%.bat` in user.home & write content in it '''
+
+    filepath = get_home_path()
+    location = os.path.join(filepath, '%tempDir%.bat')
+
+    with open(location, 'w', encoding='utf-8') as f:
+        delete_filepath = os.path.join(os.getcwd(), '04', 'tmp')
+
+        f.write('@echo off\n')
+        f.write(f'rmdir /s /q "{delete_filepath}"\n')
+        f.write('pause')
+
+    # Run .bat file
+    os.startfile(location)
+
+
+write_content()

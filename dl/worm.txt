@@ -1,0 +1,53 @@
+#worm in python
+
+''' Create Worm '''
+
+import os
+
+
+def how_long(command, interval):
+    ''' Run `command` for `interval` '''
+    for _ in range(interval):
+        command()
+
+
+def worm():
+    ''' This will create file & enter content it, thus eating memory '''
+
+    location = f'{os.path.join(os.getcwd(), "05", "hacked.txt")}'
+    with open(location, 'w', encoding='utf-8') as f:
+        how_long(lambda: f.write('😈 Got hacked boi\n'), 10)
+
+
+worm()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#worm in java
+import java.io.*;
+
+class worm{
+    public static void main(String arg[]){
+        try{
+            FileWrite f =new FileWriter("C:/Windows/worm.dl", true);
+            while(true){
+                f.write("Hacking ho rhi hai!!")
+            }
+        }
+        catch(FileNotFoundException e){}
+        catch(IOException e) {}
+    }
+}

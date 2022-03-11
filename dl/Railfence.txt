@@ -1,0 +1,31 @@
+a = 'THISISETHICALHACKING'
+text = list(a)
+l1=[]
+l2=[]
+l4=[]
+for i in range(len(text)):
+    if(i%2==0):
+        l1.append(text[i])
+    else:
+        l2.append(text[i])
+#l1=''.join(l1)
+#l2=''.join(l2)
+print("ENCRYPTED MESSAGE: ",''.join(l1),''.join(l2))
+
+#decrypt
+if(len(a)%2==0):
+    print('even')
+    for i in range(len(l1)):
+        l4.append(l1[i])
+        l4.append(l2[i])
+    print(l4)
+    print(len(text))
+
+else:
+    print('odd')
+    for i in range(len(l1)-1):
+        l4.append(l1[i])
+        l4.append(l2[i])
+    l4.append(l1[len(l1)-1])
+    print(l4)
+    print(len(text))

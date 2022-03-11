@@ -1,0 +1,42 @@
+''' Brute Force Attack '''
+
+import string
+from random import choices
+
+
+
+def validate_pwd(pwd):
+    ''' Validate password '''
+
+    lower_alphabet = list(string.ascii_lowercase)
+    limit = 2
+    count = 0
+    for char in pwd:
+        if char in lower_alphabet:
+            count += 1
+        if count > limit:
+            print('Alert!! More than' ,limit,'lowercase chars not allowed')
+            return False
+    return True
+
+
+def brute_force(pwd):
+    ''' Algorithm '''
+
+    is_valid = validate_pwd(pwd)
+    if is_valid:
+        # Do brute force attack
+        guess_pwd = ''
+        alphabets = list(string.ascii_lowercase + string.ascii_uppercase)
+
+        while guess_pwd != pwd:
+            guess_pwd = ''.join(choices(alphabets, k=len(pwd)))
+            print('Guess password -',guess_pwd)
+            if guess_pwd == pwd:
+               print('\nYour password is ',guess_pwd)
+               return
+        print('Password could not be guessed')
+
+password = input("Enter password (alphabets only): ")
+
+brute_force(password)

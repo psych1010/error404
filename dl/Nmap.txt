@@ -1,0 +1,41 @@
+# Practical 7
+
+## ACK -sA (TCP ACK scan)
+
+It never determines open (or even open|filtered) ports. It is used to map out firewall rulesets, determining whether they are stateful or not & which ports are filtered.
+
+```bash
+nmap -sA -T4 scanme.nmap.org
+```
+
+### SYN (Stealth) Scan (-sS)
+
+SYN scan is the default & most popular scan option for good reasons. It can be performed quickly, scanning thousands of ports per second on a fast network & not hampered by intrusive firewall.
+
+```bash
+nmap -p22,113,139 scanme.nmap.org
+```
+
+### FIN Scan (-sF)
+
+Sets just the TCP FIN bit.
+
+```bash
+nmap -sF -T4 www.google.com
+```
+
+### NULL Scan (-sN)
+
+Does not set any bits (TCP flag header is 0).
+
+```bash
+nmap -sN -p 22 scanme.nmap.org
+```
+
+### XMAS Scan (-sX)
+
+Sets the FIN, PSH & URG flags, lighting the packet up like a christmas tree.
+
+```bash
+nmap -sX -T4 scanme.nmap.org
+```

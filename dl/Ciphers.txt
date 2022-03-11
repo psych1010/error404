@@ -1,0 +1,48 @@
+#ceaser cypher
+''' Create Worm '''
+
+def encrypt_func(txt, s):  
+    result = ""  
+    for i in txt:    
+        result += chr((ord(i) + s - 65) % 26 + 65)  
+    return result  
+
+
+def decrypt_func(cipher, s):
+    message = ""
+    for i in cipher:
+        message += chr((ord(i) - s - 65) % 26 + 65)
+    return message
+
+
+txt=input("Enter Text: ")
+s = 3
+
+cipher = encrypt_func(txt.upper(), s)
+
+print("Shift pattern : " + str(s))  
+print("Cipher: " + cipher)
+print("Decrypt: "+decrypt_func(cipher, s))
+
+
+#monoalphabetic
+''' Mono Alphabetic Cipher '''
+
+
+def encrypt(text,A,b):
+    result = ""
+    for i in text:
+        if (i.isalpha()):
+            for j in range(len(A)):
+                if (i == A[j]):
+                    result += b[j]
+        else:
+            result += i
+    return result
+
+#a = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+A = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+b = ['q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m']
+text = "Welcome to ethical hacking"
+print("Text  : " + text)
+print("Cipher: " + encrypt(text.upper(),A,b))
